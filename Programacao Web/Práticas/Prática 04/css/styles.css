@@ -1,0 +1,13 @@
+h1 {
+    color: blue;
+    font-size: 24px;
+}
+
+#foot p{
+    color: blue;
+    font-weight: bold;
+}
+
+p.first {
+    color: red;
+}

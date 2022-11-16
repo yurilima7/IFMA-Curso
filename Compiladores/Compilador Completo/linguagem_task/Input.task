@@ -1,0 +1,15 @@
+INICIO
+
+	Numero a, b$
+	Texto t1, t2, t3$
+
+	Leia(t1)$
+	Leia(b)$
+	
+	a = 1 + 2 * 3 / b$
+	b = 3 * 1 + 2$
+	
+	Escreva(a)$
+	Escreva(b)$
+
+FIM$

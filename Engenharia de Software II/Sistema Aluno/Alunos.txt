@@ -1,0 +1,4 @@
+Nome: François
+Idade: 25
+Campus: IFMA - CAXIAS
+Curso: CC
