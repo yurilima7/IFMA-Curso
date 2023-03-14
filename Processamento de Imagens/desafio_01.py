@@ -1,5 +1,5 @@
 import cv2
-img_original = cv2.imread('Processamento de Imagens\original.jpeg')
+img_original = cv2.imread('Processamento de Imagens/images/original.jpeg')
 img_original = cv2.resize(img_original, (300, 400))
 
 gray_img = img_original.copy()
