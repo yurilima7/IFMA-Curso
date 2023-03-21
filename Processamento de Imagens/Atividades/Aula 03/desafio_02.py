@@ -5,8 +5,8 @@ BLUE = (255, 0, 0)
 GREEN = (0, 255, 0)
 
 COLORS=[BLUE,GREEN]
-pointsOld = []
-pointsNew = []
+points = []
+newPoints = []
 
 thickness = 10
 oldX, oldY = None, None
@@ -14,19 +14,19 @@ isDrawing = False
 color = BLUE
 
 def draw(event, x, y, flags, param):
-    global oldX, oldY, isDrawing, pointsOld, pointsNew
+    global oldX, oldY, isDrawing, points, newPoints
 
     if event == cv2.EVENT_LBUTTONDOWN:
         oldX, oldY, isDrawing = x, y, True
 
     elif event == cv2.EVENT_MOUSEMOVE and isDrawing:
-        pointsOld.append(oldX), pointsOld.append(oldY)
-        pointsNew.append(x), pointsNew.append(y)
+        points.append(oldX), points.append(oldY)
+        newPoints.append(x), newPoints.append(y)
         oldX, oldY = x, y
 
     elif event == cv2.EVENT_LBUTTONUP:
-        pointsOld.insert(0, oldX), pointsOld.insert(1, oldY)
-        pointsNew.insert(0, x), pointsNew.insert(1, y)
+        points.insert(0, oldX), points.insert(1, oldY)
+        newPoints.insert(0, x), newPoints.insert(1, y)
         isDrawing = False
 
 video = cv2.VideoCapture("Processamento de Imagens/videos/IFMA Campus Caxias.mp4")
@@ -58,13 +58,13 @@ else:
                     color = BLUE
 
             elif key & 0xFF == ord(' '):
-                pointsOld.clear()
-                pointsNew.clear()
+                points.clear()
+                newPoints.clear()
 
-            if pointsOld and pointsNew:
-                for i in range(0, len(pointsOld), 2):
-                     cv2.line(frame, (pointsOld[i], pointsOld[i+1]), 
-                              (pointsNew[i], pointsNew[i+1]), color, thickness)
+            if points and newPoints:
+                for i in range(0, len(points), 2):
+                     cv2.line(frame, (points[i], points[i+1]), 
+                              (newPoints[i], newPoints[i+1]), color, thickness)
     
             newVideo.write(frame)
 
