@@ -34,24 +34,33 @@ from Biblioteca.Grafo import GrafoListaAdj
 
 #Dados: árvore T
 def CentroArvore(T):
+	# se existe apenas um vértice na árvore logo este é o centro
 	if T.n == 1:
 		return [1]
+	# lista de graus inicializada em 0
 	d = [0]*(T.n+1)
+	# inicializa a quantidade de vértices existentes na árvore
 	n = T.n
+	# faz o calculo de graus de cada vértice da árvore
 	for (u,v) in T.E():
 		d[u]=d[u]+1;d[v]=d[v]+1
+	# inicializa uma lista com todos os vértices de grau 1 (folhas)
 	F = [ v for v in T.V() if d[v]==1 ]
 
 	while n > 2:
 		Flin = []
+		# seleciona todas as folhas
 		for f in F:
-			v_no = next(T.N(f,IterarSobreNo=True)) #por ser folha, tem apenas um vizinho		
+			v_no = next(T.N(f,IterarSobreNo=True)) # por ser folha, tem apenas um vizinho		
 			v = v_no.Viz
+			# removendo e atualizando o grau do vértice pai
 			d[v]=d[v]-1; n=n-1; T.RemoverAresta(v_no.e) 
+			# se grau = 1, é adicionado a nova lista de folha
 			if d[v] == 1:
 				Flin.append(v)
+		# atualiza a lista com todos os vértices de grau 1 (folhas)
 		F = Flin
-
+	# retorna as folhas
 	return F
 
 # for T in LerGrafosTeste():
