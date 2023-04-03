@@ -26,8 +26,8 @@ labels = nx.get_edge_attributes(Gn1, 'weight')
 
 nx.draw_networkx_edge_labels(Gn1, pos, edge_labels = labels)
 nx.draw_networkx(Gn1, pos, with_labels = True)
-plt.show()
 
 C2 = CentroArvore(G2)
+print("Centro = {}".format(C2))
 
-print(C2)
+plt.show()
