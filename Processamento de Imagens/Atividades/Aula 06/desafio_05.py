@@ -8,14 +8,14 @@ points = [0, 0]
 
 rows, cols = img.shape[:2]
 
-def center(event, x, y, flags, param):
+def capPoints(event, x, y, flags, param):
     global points
     if event == cv2.EVENT_LBUTTONDOWN:
         points.clear()
         points.insert(0, x), points.insert(1, y)
 
-cv2.namedWindow('Resultado Afim Rot')
-cv2.setMouseCallback('Resultado Afim Rot', center)
+cv2.namedWindow('Resultado Rot')
+cv2.setMouseCallback('Resultado Rot', capPoints)
 
 while 1:
     key = cv2.waitKey(1)
