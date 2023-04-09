@@ -23,7 +23,7 @@ while 1:
     Matriz = cv2.getRotationMatrix2D((points[0], points[1]), rot, 1)
     res = cv2.warpAffine(img, Matriz, (cols, rows))
     cv2.circle(res, (points[0], points[1]), 5, blue, -1)
-    cv2.imshow('Resultado Afim Rot', res)
+    cv2.imshow('Resultado Rot', res)
 
     if key & 0xFF == ord('r'):
         rot = 0 if rot > 360 else rot + 10
