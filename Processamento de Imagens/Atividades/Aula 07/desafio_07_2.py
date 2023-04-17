@@ -19,21 +19,16 @@ else:
         ret, frame = video.read()
         if ret is True:
 
-            # logo no topo
             rows, cols, channels = imgIF.shape
 
-            # trecho da imagem
             roi = frame[0 : rows, 0 : cols]
 
-            # criando máscara
             imgIFgray = cv2.cvtColor(imgIF, cv2.COLOR_BGR2GRAY)
             ret, mask_inv = cv2.threshold(imgIFgray, 125, 255, cv2.THRESH_BINARY)
             mask = cv2.bitwise_not(mask_inv)
 
-            # remove máscara onde for preciso
             img_bg = cv2.bitwise_and(roi, roi, mask = mask_inv)
 
-            # filtra somente a máscara obtida pelo threshold
             imgIF_fg = cv2.bitwise_and(imgIF, imgIF, mask = mask)
 
             i = cv2.add(img_bg, imgIF_fg)
