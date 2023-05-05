@@ -28,6 +28,8 @@ i = cv2.add(img_bg, imgIF_fg)
 img[0: rows, 0: cols] = i
 
 cv2.imshow('Resultado', img)
+cv2.imwrite("Processamento de Imagens/images/new-if.jpg", img)
+cv2.imwrite("Processamento de Imagens/images/new-if_mask.jpg", mask)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
