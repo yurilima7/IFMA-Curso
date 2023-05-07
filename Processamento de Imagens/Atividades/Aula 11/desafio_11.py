@@ -23,4 +23,3 @@ plt.subplot(223), plt.imshow(cv2.cvtColor(dilation_rounded, cv2.COLOR_BGR2RGB)),
 
 plt.tight_layout()
 plt.show()
-# cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
