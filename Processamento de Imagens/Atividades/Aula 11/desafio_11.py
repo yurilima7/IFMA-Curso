@@ -17,9 +17,10 @@ erosion_kd = cv2.erode(dilation, kernelDilation, iterations = 5)
 # dilatação eliptica aplicada a erosão feita na linha anterior
 dilation_rounded = cv2.dilate(erosion_kd, kernelDilation, iterations = 3)
 
-plt.subplot(221), plt.imshow(img), plt.title("Original")
-plt.subplot(222), plt.imshow(erosion), plt.title("Erosion")
-plt.subplot(223), plt.imshow(dilation_rounded), plt.title("Dilation")
+plt.subplot(221), plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB)), plt.title("Original")
+plt.subplot(222), plt.imshow(cv2.cvtColor(erosion, cv2.COLOR_BGR2RGB)), plt.title("Erosion")
+plt.subplot(223), plt.imshow(cv2.cvtColor(dilation_rounded, cv2.COLOR_BGR2RGB)), plt.title("Dilation")
 
 plt.tight_layout()
 plt.show()
+# cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
