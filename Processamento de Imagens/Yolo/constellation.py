@@ -1,8 +1,13 @@
 from ultralytics import YOLO
 import cv2
 
+Constellations = ["Aquario", "Aries", "Cancer", "Capricornio", "Gemeos", "Leao",
+                      "Libra", "Peixes", "Sargitario", "Escorpiao", "Touro", "Virgem"]
+
+name = Constellations[7]
+
 model = YOLO("Processamento de Imagens/Yolo/train/best.pt")
-image_path = "Processamento de Imagens/Yolo/leon.jpg"
+image_path = f"Processamento de Imagens/Yolo/test/{name}.jpg"
 image = cv2.imread(image_path)
 
 # Fazendo a classificação
@@ -31,11 +36,11 @@ if len(results[0].boxes.data) > 0:
     message = f"{class_name}: {conf * 100:.2f}%"
     text_width, _ = cv2.getTextSize(message, fontFace, fontScale, thickness)
 
-    x = int((width - text_width[0]) / 2)
+    center = int((width - text_width[0]) / 2)
 
     # Desenhar as bounding boxes na imagem
     cv2.rectangle(image, (int(x_min), int(y_min)), (int(x_max), int(y_max)), (0, 255, 0), 2)
-    cv2.putText(image, message, (x , int(height) - 10), fontFace, fontScale, (0, 255, 255), thickness)
+    cv2.putText(image, message, (center , int(height) - 10), fontFace, fontScale, (0, 255, 255), thickness)
 
     # Exibir a imagem com as bounding boxes
     cv2.imshow("Constelacao", image)
